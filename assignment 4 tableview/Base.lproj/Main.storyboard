@@ -4,7 +4,6 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="21207"/>
-        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -41,7 +40,7 @@
                                             </view>
                                         </subviews>
                                     </stackView>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CfT-Gn-jKx">
+                                    <button opaque="NO" contentMode="scaleToFill" restorationIdentifier="addBtn" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="CfT-Gn-jKx">
                                         <rect key="frame" x="303" y="0.0" width="60" height="40"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="60" id="Lcs-iV-N8U"/>
@@ -55,6 +54,9 @@
                                             <fontDescription key="titleFontDescription" type="system" pointSize="0.0"/>
                                             <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         </buttonConfiguration>
+                                        <connections>
+                                            <action selector="onclickAddBtn:" destination="BYZ-38-t0r" eventType="touchUpInside" id="iSJ-Ph-lgP"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -62,40 +64,12 @@
                                 <rect key="frame" x="0.0" y="139" width="393" height="679"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" rowHeight="70" id="j2G-OL-nE6">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" selectionStyle="blue" hidesAccessoryWhenEditing="NO" indentationLevel="1" indentationWidth="0.0" reuseIdentifier="editTableViewCell" rowHeight="70" id="j2G-OL-nE6" customClass="editTableViewCell" customModule="assignment_4_tableview" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="50" width="393" height="70"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="j2G-OL-nE6" id="KnN-KD-my6">
                                             <rect key="frame" x="0.0" y="0.0" width="393" height="70"/>
                                             <autoresizingMask key="autoresizingMask"/>
-                                            <subviews>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="esj-Po-j2X">
-                                                    <rect key="frame" x="35" y="25" width="41.333333333333343" height="20.333333333333329"/>
-                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="hw5-bi-quP">
-                                                    <rect key="frame" x="304.66666666666669" y="15" width="73.333333333333314" height="40"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="height" constant="40" id="2pN-ZB-fMZ"/>
-                                                        <constraint firstAttribute="width" constant="70" id="agR-gb-gO9"/>
-                                                    </constraints>
-                                                    <state key="normal" title="Button"/>
-                                                    <buttonConfiguration key="configuration" style="plain" title="Delete">
-                                                        <backgroundConfiguration key="background">
-                                                            <color key="backgroundColor" name="AccentColor"/>
-                                                        </backgroundConfiguration>
-                                                        <color key="baseForegroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                                                    </buttonConfiguration>
-                                                </button>
-                                            </subviews>
-                                            <constraints>
-                                                <constraint firstItem="esj-Po-j2X" firstAttribute="centerY" secondItem="KnN-KD-my6" secondAttribute="centerY" id="2yS-j7-run"/>
-                                                <constraint firstAttribute="trailing" secondItem="hw5-bi-quP" secondAttribute="trailing" constant="15" id="RWR-VO-sBS"/>
-                                                <constraint firstItem="esj-Po-j2X" firstAttribute="leading" secondItem="KnN-KD-my6" secondAttribute="leadingMargin" constant="15" id="SU7-C2-cx9"/>
-                                                <constraint firstItem="hw5-bi-quP" firstAttribute="centerY" secondItem="KnN-KD-my6" secondAttribute="centerY" id="hfy-Fz-7UR"/>
-                                            </constraints>
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                 </prototypes>
@@ -117,6 +91,11 @@
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="AR7-So-bwD" secondAttribute="trailing" constant="15" id="Ux2-QU-Grn"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="addBtn" destination="CfT-Gn-jKx" id="cno-aT-jVu"/>
+                        <outlet property="tableview" destination="bwM-aX-AGI" id="RWA-Vd-Rcj"/>
+                        <outlet property="txtInput" destination="lgN-ub-8ez" id="yiH-fY-K7t"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
@@ -124,9 +103,6 @@
         </scene>
     </scenes>
     <resources>
-        <namedColor name="AccentColor">
-            <color red="0.0" green="0.46000000000000002" blue="0.89000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
